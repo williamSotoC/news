@@ -1,0 +1,24 @@
+form button {
+    background-color: rgba(255, 0, 0, 0.297);
+    color: #fff;
+
+}
+
+form button.buttonAbilitato {
+    background-color: rgb(255, 0, 0);
+
+
+}
+
+mat-radio-group {
+    background-color: #fff;
+    display: block;
+    width: 100%;
+    height: 55px;
+    color: red;
+}
+
+.margin {
+    margin-top: 1.3rem;
+}
+

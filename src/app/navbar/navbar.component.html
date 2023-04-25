@@ -1,0 +1,33 @@
+<nav>
+    <ul>
+       <!-- *opzione 1 routerLink SENZA le quadre-->
+       <!-- <li><a routerLink="/home">Home</a></li> -->
+       <!-- !  routerLink  esso si comporta come un nome di attributo tradizionale cioe dentro le doppie virgolette devo scrivere solo stringa . Ma se voglio anche scriver codice javascrit allora tale codice javaScript lo devo inserire dentro le doppie parentesi graffe {{codice javaScript}}-->
+       <!-- *opzione 1 -->
+
+
+
+       <!-- *opzione 2 routerLink CON le quadre-->
+       <li><a [routerLink]="['/home']" routerLinkActive="home">Home</a></li>
+       <!-- ! [routerLink] esso si comporta come un vera direttiva  di Angular quindi dentro le doppie virgolette devo per forza scrivere del codice javaScript -->
+       <!-- *opzione 2 -->
+  
+
+
+
+       
+       <li><a [routerLink]="['/news']" routerLinkActive="news">News</a></li>
+       <li><a [routerLink]="['/contatti']" routerLinkActive="contatti">Contatti</a></li>
+       <li><a [routerLink]="['/login']" routerLinkActive="login">Login</a></li>
+       <li><a [routerLink]="['/aggiungi-news']" routerLinkActive="login">Aggiungi news</a></li>
+       <!-- ! scivere "['/login']" o "'/login'" è la stessa cosa ,e il tutto continua a funzionare-->
+    </ul>
+    <!-- ! nel caso di rotte FISSE  [routerLink] avrà come valore un'array di UN SINGOLO elemento e tale elemento sarà  SEMPRE una stringa e inizierà SEMPRE con uno slash-->
+    <!-- ! RICORDO che il valore di [routerLink] e il valore di path DEVONO SEMPRE COINCIDERE ad eccezione di QUEL slash INIZIALE che si mette nel valore del [routerLink] -->
+    <!-- ! quando usiamo  "routerLink" al posto di "href" osservo che quando cambio rotta la mia pagina WEB NON VIENE RICARICATA-->
+ 
+ 
+ 
+ 
+ 
+ </nav>

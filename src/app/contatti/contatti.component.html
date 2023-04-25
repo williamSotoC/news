@@ -1,0 +1,144 @@
+<div class="contenitorePrincipaleForm">
+    <form (ngSubmit)="inviareUtenteRegistratoAlServer()" #laMiaForm="ngForm">
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+
+            <input type="text" matInput name="nome" placeholder="Nome..." [(ngModel)]="modello.nome"
+                #variabileNome="ngModel" required pattern="^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$">
+
+            <mat-error *ngIf="variabileNome.hasError('required')">
+                Devi inserire il tuo nome
+            </mat-error>
+
+
+            <mat-error *ngIf="variabileNome.hasError('pattern')">
+                Nome non valido
+            </mat-error>
+
+        </mat-form-field>
+
+
+
+
+        
+
+
+        
+        <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+
+            <input type="email" matInput name="email" placeholder="Email..." [(ngModel)]="modello.email"
+                #variabileEmail="ngModel" required email pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+            <mat-icon matSuffix>email</mat-icon>
+
+
+            <mat-error *ngIf="variabileEmail.hasError('required') == true">
+                Devi inserire la tua email
+            </mat-error>
+
+            <!--! opzione1 uso l'attributo html tradizionale pattern-->
+            <mat-error *ngIf="variabileEmail.hasError('pattern') == true">
+                E-mail non valida
+            </mat-error>
+            <!--! opzione1 -->
+
+            <!--! opzione2 uso l'attributo html tradizionale  email-->
+            <!-- <mat-error *ngIf="variabileEmail.hasError('email') == true">
+                E-mail non valida
+            </mat-error> -->
+            <!--! opzione2 -->
+
+        </mat-form-field>
+
+
+
+
+
+
+
+
+        <mat-form-field appearance="fill">
+
+            <mat-label>Telefono</mat-label>
+
+
+            <input type="tel" matInput name="telefono" placeholder="Telefono..." [(ngModel)]="modello.telefono"
+                #variabileTelefono="ngModel" required pattern="^((\+|00)?39)?3\d{2}\d{6,7}$">
+                <mat-icon matSuffix>phone</mat-icon>
+
+
+            <mat-error *ngIf="variabileTelefono.hasError('required') == true">
+                Devi inserire il tuo telefono
+            </mat-error>
+
+
+            <mat-error *ngIf="variabileTelefono.hasError('pattern') == true">
+                Telefono non valido
+            </mat-error>
+
+        </mat-form-field>
+
+
+
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+
+            <textarea matInput name="messaggio" placeholder="Scrivi qualcosa ..." [(ngModel)]="modello.messaggio"
+                #messaggio="ngModel"></textarea>
+            <!-- ! E' congliato che il nome di proprietà del modello(messaggio) COINCIDA con il valore dell'attributo tradizionale "name"("messaggio")-->
+            <!-- !   Devo SEMPRE inserire l'attributo "name" altrimenti la console mi da errore-->
+        </mat-form-field>
+
+
+
+
+
+
+
+        <!-- *opzione 1 -->
+        <!-- <button type="submit" mat-raised-button color="primary" [disabled]="laMiaForm.form.valid == false">Invia</button> -->
+        <!-- *opzione 1 -->
+        <!-- *opzione 2 -->
+        <button type="submit" mat-raised-button 
+            [disabled]="laMiaForm.form.invalid == true" [ngClass]="{'buttonAbilitato': laMiaForm.form.valid == true}">Invia</button>
+        <!-- *opzione 2 -->
+
+    </form>
+
+
+
+</div>
+
+
+<button  type="button" (click)="tornaIndietro()"><em>&#8678;</em> Torna indietro</button>
+
+
+<div *ngIf="rispostaServerOggetto != undefined">
+    <p>{{rispostaServerOggetto.msg}}</p>
+</div>
+
+
+<!-- <pre> -->
+    <!-- {{modello | json}} -->
+     <!-- {{laMiaForm.form.valid | json}} -->
+     <!-- ! esso mi ritorna true se la form è valida -->
+    
+    <!-- {{laMiaForm.form.invalid | json}} -->
+     <!-- ! esso mi ritorna true se la form è NON valida -->
+    
+    <!-- {{variabileNome.hasError('required')}} -->
+     <!-- ! esso mi ritorna true se NON scrivo niente nel campo input relativo al nome-->
+    
+    <!-- {{variabileEmail.hasError('email')}} -->
+     <!-- ! esso mi ritorna true se scrivo  dentro il campo dell'email ad esempio: "ddd" .Invece mi ritorna false se scrivo: "ddd@gmail.com" -->
+    
+   <!-- </pre> -->
+
+<!-- ! il prof ha usato al posto di "hasError",*ngIf="f.controls[password]?.invaid && f.controls[password].dirty" -->
+<!-- ! quello che comanda è pattern e required -->
+<!-- ! In una applicazione vera per la form ,il metodo della programazione REATTIVA è la piu consiglita da usare -->

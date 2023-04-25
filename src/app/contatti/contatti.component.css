@@ -1,0 +1,32 @@
+
+button[type="button"] {
+    color: #fff;
+    background-color: #f00;
+    padding: 1rem 0;
+    border: none;
+    width: 20%;
+    cursor: pointer;
+
+
+
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+
+    
+}
+
+form button {
+   background-color: rgba(255, 0, 0, 0.297);
+   color: #fff;
+
+}
+form button.buttonAbilitato {
+   background-color: rgb(255, 0, 0);
+
+
+}
+
+

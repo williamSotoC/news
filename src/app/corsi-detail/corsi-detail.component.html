@@ -1,0 +1,56 @@
+
+
+
+<table *ngIf="elementoIessimoOggettoCorso != undefined">
+    <thead>
+        <tr>
+            <th>Nome corso</th>
+            <th>Durata(ore)</th>
+            <th>Costo</th>
+            <th>Docente</th>
+            <th>Data partenza</th>
+            <th>Partecipanti</th>
+        </tr>
+
+
+    </thead>
+
+    <tbody>
+        <tr >
+            <td>{{elementoIessimoOggettoCorso.titolo}}</td>
+            <td>{{elementoIessimoOggettoCorso.durata}}</td>
+            <td>{{elementoIessimoOggettoCorso.costo | currency: "EUR": "symbol"}}</td>
+            <td>{{elementoIessimoOggettoCorso.docente}}</td>
+            <td>{{elementoIessimoOggettoCorso.data_partenza}}</td>
+            <td>{{elementoIessimoOggettoCorso.n_partecipanti}}</td>
+            
+            
+        </tr>
+
+
+    </tbody>
+
+
+
+</table>
+
+
+<button mat-raised-button color="warn" type="button" (click)="tornaIndietro()"><em>&#8678;</em>  Torna indietro</button>
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="messagioDiErrore != undefined">
+
+    {{messagioDiErrore}}
+
+
+
+</div>

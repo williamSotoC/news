@@ -1,0 +1,64 @@
+<h1>DashBoard-news</h1>
+
+<h3>Ecco cosa puoi fare:</h3>
+<ol>
+    <li>Puoi cercare una notizia digitando una o più parole chiavi</li>
+    <li>
+        <a href="javascript:void(0)" (click)="logout()">
+            Logout
+        </a>
+
+        <!--! href="javascript:void(0)". È un modo per scrivere un link “vuoto” e molto spesso equivale a
+        <a href=”#”>, con la differenza che il # fa puntare il browser in alto nella pagina.
+        Infatti se ci troviamo in una pagina molto lunga vedremo che dopo il click su <a href=”#”> il browser punta in alto.
+        La sintassi void(0) invece non fa nulla e non produce alcun effetto. -->
+
+    </li>
+
+</ol>
+
+
+
+
+<mat-form-field appearance="fill" >
+    <mat-label>Digita una o più parole chiavi</mat-label>
+
+    <input type="text" placeholder="Cerca le notizie..." matInput
+    [formControl]="parolaChiave">
+   
+</mat-form-field>
+
+
+<table>
+
+
+    <thead>
+        <tr>
+            <th>-</th>
+            <th>Titolo</th>
+            <th>Autore</th>
+            <th>Data</th>
+
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+        <tr *ngFor="let elementoIessimoOggettoNotizia of arrayDiOggettiNotizie | filtrareNews:parolaChiave.value!">
+
+
+            <!-- ! "arrayDiOggettiNotizie" COINCIDE CON IL NOME DI PARAMETRO "arrayDiOggettiValueCheDevoFiltrare" del metodo transform() -->
+            <!-- ! "parolaChiave.value" è il parametro della pipe -->
+            <!-- ! tale parametro della pipe viene inserito dentro l'array "args" che si trova dentro il file "pipe.ts" -->
+            <td>{{elementoIessimoOggettoNotizia.id}}</td>
+            <td>{{elementoIessimoOggettoNotizia.titolo}}</td>
+            <td>{{elementoIessimoOggettoNotizia.autore}}</td>
+            <td>{{elementoIessimoOggettoNotizia.data | date:"dd/MM/yyyy"}}</td>
+            <!-- ! se uso la pipe "date" con   data in formato: "24-04-2023", la console mi da errore-->
+            
+        </tr>
+
+    </tbody>
+</table>

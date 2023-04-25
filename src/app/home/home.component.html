@@ -1,0 +1,43 @@
+<table>
+
+
+
+    <thead>
+        <tr>
+            <th>-</th>
+            <th>Nome del corso</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let elementoIessimoOggettoCorso of arrayDiOggettiCorsi">
+
+
+            <td>{{elementoIessimoOggettoCorso.id}}</td>
+
+
+            <td>
+                <!--! opzione 1  usando le quadre-->
+                <a [routerLink]="['/home/corsi-detail', elementoIessimoOggettoCorso.id]">
+                    <!-- ! ho aggiunto  "/home" per far si che quando vado  nel dettaglio, il menu "home" rimanga colorato di rosso(SELEZIONATO), altrimenti tale menu "home" diventa colorato di bianco(NON SELEZIONATO)-->
+                    {{elementoIessimoOggettoCorso.titolo}}
+                </a>
+                 <!--! opzione 1 -->
+                 <!--! opzione 2 senza usare le quadre-->
+                 <!-- <a routerLink="/home/corsi-detail/{{elementoIessimoOggettoCorso.id}}">
+                    {{elementoIessimoOggettoCorso.titolo}}
+                </a> -->
+                 <!--! opzione 2 -->
+            </td>
+
+
+        </tr>
+
+
+
+
+    </tbody>
+</table>

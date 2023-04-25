@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+    color: #f00;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: #f00;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+mat-form-field {
+    width: 100%;
+}

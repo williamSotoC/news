@@ -1,0 +1,92 @@
+<div class="contenitorePrincipaleForm">
+
+    <form [formGroup]="laMiaForm" (ngSubmit)="inviaForm()">
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Titolo</mat-label>
+            <input formControlName="titolo" matInput name="titolo" placeholder="inserici il titolo...">
+            <mat-error *ngIf="laMiaForm.get('titolo')!.errors?.['required']">
+                E' obbligatorio scrivere titolo
+
+            </mat-error>
+            <mat-error *ngIf="laMiaForm.get('titolo')!.errors?.['minlength']">
+                Devi scrivere almeno 4 caratteri
+
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Data</mat-label>
+            <input type="datetime" formControlName="data" matInput name="data"
+                placeholder="inserici data esempio 2023-04-24">
+            <mat-error *ngIf="laMiaForm.get('data')!.errors?.['required']">
+                E' obbligatorio scrivere data
+
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+        <mat-radio-group formControlName="home">
+            <mat-radio-button value="1">inHome</mat-radio-button>
+            <mat-radio-button value="2">Non inHome</mat-radio-button>
+        </mat-radio-group>
+
+
+
+
+
+
+        <mat-form-field class="margin" appearance="fill">
+            <mat-label>Autore</mat-label>
+            <input formControlName="autore" matInput name="autore" placeholder="inserici autore...">
+            <mat-error *ngIf="laMiaForm.get('autore')!.errors?.['required']">
+                E' obbligatorio scrivere autore
+
+            </mat-error>
+            <mat-error *ngIf="laMiaForm.get('autore')!.errors?.['pattern']">
+                Nome non valido
+
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Descrizione</mat-label>
+            <textarea matInput name="descrizione" placeholder="Scrivi una descrizione ..." formControlName="descrizione"></textarea>
+            <mat-error *ngIf="laMiaForm.get('descrizione')!.errors?.['required']">
+                E' obbligatorio scrivere descrizione
+
+            </mat-error>
+            <mat-error *ngIf="laMiaForm.get('descrizione')!.errors?.['minlength']">
+                <!-- ! ATTENZIONE: nel html devo scrivere "minlength" con la "l" minuscola altrimenti il messaggio di errore non appare-->
+                Devi scrivere almeno 10 caratteri
+
+            </mat-error>
+            
+        </mat-form-field>
+
+
+
+
+        <button type="submit" [disabled]="laMiaForm.invalid == true"
+            [ngClass]="{'buttonAbilitato': laMiaForm.valid == true}" mat-raised-button >Invia</button>
+
+
+    </form>
+
+
+</div>
+
+<div *ngIf="messaggio != undefined">
+    {{messaggio}}
+
+</div>

@@ -1,0 +1,10 @@
+form button {
+    background-color: rgba(255, 0, 0, 0.297);
+    color: #fff;
+}
+
+form button.buttonAbilitato {
+    background-color: rgb(255, 0, 0);
+ 
+ 
+ }

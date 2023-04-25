@@ -1,0 +1,67 @@
+<div class="contenitorePrincipaleForm">
+
+    <form (ngSubmit)="inviaUtenteLoggato()" #laMiaForm="ngForm">
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+
+            <input type="text" matInput name="nome" placeholder="inserici il tuo nome..." [(ngModel)]="modello.username" #variabileTemplateNome="ngModel" required pattern="^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$">
+
+            <mat-error *ngIf="variabileTemplateNome.hasError('required') == true">
+               E' obbligatorio scrivere il nome
+
+            </mat-error>
+
+            <mat-error *ngIf="variabileTemplateNome.hasError('pattern') == true">
+               Nome non valido
+
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+
+            <input type="password" matInput name="password" placeholder="inserici la tua password..." [(ngModel)]="modello.password" #variabileTemplatePassword="ngModel" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+             <!-- Criterio di validazione per la password:
+            - almeno 8 caratteri
+            - almeno un carattere minuscolo
+            - almeno un carattere maiuscolo
+            - almeno un carattere numerico [0..9] -->
+            
+
+
+            <mat-error *ngIf="variabileTemplatePassword.hasError('required') == true">
+               E' obbligatorio scrivere la password
+
+            </mat-error>
+
+            <mat-error *ngIf="variabileTemplatePassword.hasError('pattern') == true">
+               Password non valida
+
+            </mat-error>
+        </mat-form-field>
+
+
+
+        <button type="submit" mat-raised-button 
+            [disabled]="laMiaForm.form.invalid == true" [ngClass]="{'buttonAbilitato': laMiaForm.form.valid == true}">Invia</button>
+
+
+    </form>
+
+
+</div>
+
+
+<div *ngIf="messaggio != undefined">
+    {{messaggio}}
+
+</div>
+<div *ngIf="messaggioDiErrore != undefined">
+    {{messaggioDiErrore}}
+
+</div>

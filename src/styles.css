@@ -1,0 +1,164 @@
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #fff;
+    line-height: normal;
+    font-size: 16 px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contenitorePrincipale {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto ;
+    /* background-color: #66b60c; */
+
+
+}
+
+
+/*! barra menu */
+/* nav {
+    background-color: #c41616;
+} */
+
+nav ul {
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* background-color: #6011b5; */
+    display: flex;
+    flex-wrap: nowrap;/** default */
+
+    
+
+}
+
+nav ul li {
+    width: calc(100% / 4);
+    /* background-color: #09bce8; */
+    /* margin-right: 5px; */
+}
+
+nav ul li a {
+    display: block;
+    color: #000;
+    background-color: #fff;
+    border-right: 1px solid black;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;/** opzione2 height: 100px;  line-height: 100px; */
+}
+
+nav ul li:last-child a {
+    border-right: none;
+
+}
+
+.home,.news,.contatti,.login {
+    background-color: #f00;
+}
+/*! barra menu */
+
+
+
+/* ! table */
+table {
+    border-collapse: collapse;
+    /* * per eliminare quel spazio di default tra le singole celle */
+    /* background-color: #c41616; */
+    width: 100%;
+    /** "%" riferito a suo contenitore padre */
+    margin: 2rem 0;
+}
+
+table thead tr th {
+    background-color: #f00;
+    height: 2.5rem;
+    font-size: 1.1rem;
+}
+
+table tbody tr td {
+    text-align: center;
+    height: 5rem;
+    font-size: 1.1rem;
+    /* color: #f00; */
+
+    transition: 400ms ease-in;
+    -webkit-transition: 400ms ;
+    -moz-transition: 400ms ;
+    -ms-transition: 400ms ;
+    -o-transition: 400ms ;
+
+
+}
+
+table tbody tr td:hover {
+    color: grey;
+}
+
+table tbody tr a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+
+    transition: 400ms ease-in;
+    -webkit-transition: 400ms ;
+    -moz-transition: 400ms ;
+    -ms-transition: 400ms ;
+    -o-transition: 400ms ;
+
+}
+
+table tbody tr a:hover {
+    color: gray;
+}
+/* ! table */
+
+
+/* ! form */
+div.contenitorePrincipaleForm {
+    width: 50%;
+    /* background-color: #bb2b2b; */
+    margin: 0 auto;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f00;
+    
+
+}
+
+form button, form mat-form-field {
+    width: 100%;
+}
+/* ! form */
+
+button em {
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* html, body { height: 100%; } */
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
