@@ -19,6 +19,7 @@ export class FiltrareNewsPipe implements PipeTransform {
 
 
             return (valoreDiProprietaTitolo.includes(parolaChiave) == true || valoreDiProprietaAutore.includes(parolaChiave) == true || valoreDiProprietaDescrizione.includes(parolaChiave) == true);
+            // ! includes funziona solo con le stringhe
             // ! valoreDiProprietaTitolo.includes(parolaChiave) .ESSO vuoledire se il valore di nome di proprietà titolo COINCIDE con il parametro della pipe(cioè con quello che scrivo nel campo del input type=text) allora il metodo include mi ritorna true altrimenti mi ritorna false
             // ! e se true == true allora avrò "valoreArrayFiltered"
         })

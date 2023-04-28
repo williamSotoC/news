@@ -24,6 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule } from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DashboardNewsComponent } from './dashboard-news/dashboard-news.component';
 import { FiltrareNewsPipe } from './pipes/filtrare-news.pipe';
 import { AggiungiNewsComponent } from './aggiungi-news/aggiungi-news.component';
@@ -54,7 +56,9 @@ import { AggiungiNewsComponent } from './aggiungi-news/aggiungi-news.component';
         MatIconModule,
         MatButtonModule,
         ReactiveFormsModule,
-        MatRadioModule
+        MatRadioModule,
+        MatDatepickerModule,
+        MatNativeDateModule
 
     ],
     providers: [

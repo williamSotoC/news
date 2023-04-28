@@ -6,7 +6,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Nome</mat-label>
 
-            <input type="text" matInput name="nome" placeholder="inserici il tuo nome..." [(ngModel)]="modello.username" #variabileTemplateNome="ngModel" required pattern="^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$">
+            <input type="text" matInput name="nome" placeholder="inserici il tuo nome..." [(ngModel)]="modello.username" #variabileTemplateNome="ngModel" required pattern="^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$" autocomplete>
 
             <mat-error *ngIf="variabileTemplateNome.hasError('required') == true">
                E' obbligatorio scrivere il nome
@@ -25,7 +25,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
 
-            <input type="password" matInput name="password" placeholder="inserici la tua password..." [(ngModel)]="modello.password" #variabileTemplatePassword="ngModel" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+            <input type="password" matInput name="password" placeholder="inserici la tua password..." [(ngModel)]="modello.password" #variabileTemplatePassword="ngModel" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" autocomplete>
              <!-- Criterio di validazione per la password:
             - almeno 8 caratteri
             - almeno un carattere minuscolo

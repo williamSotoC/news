@@ -11,11 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class CorsiService {
 
+    arrayOggettiCorsi: ICorso[] = CORSI;
+
     constructor(private http: HttpClient) { }
 
     prendereCorsi(): ICorso[] {
 
-        return CORSI;
+        return this.arrayOggettiCorsi;
 
     };//! funzione CREATA prendereCorsi
 
@@ -25,7 +27,7 @@ export class CorsiService {
     // todo  opzione1 usando il metodo find
     prendereCorsiDetail(valoreDelSegnaposto: string): ICorso | undefined   {
 
-        let elementoIessimoOggettoCorsoFound = CORSI.find((elementoIessimoOggetto) => {
+        let elementoIessimoOggettoCorsoFound = this.arrayOggettiCorsi.find((elementoIessimoOggetto) => {
 
             return (elementoIessimoOggetto.id == Number(valoreDelSegnaposto));
             // ! la conversione a numero potevo anche farlo direttamente nel componente cioè nel chiamante
@@ -64,12 +66,28 @@ export class CorsiService {
 
 
 
+
     inviareUtenteRegistratoAlServer(utenteRegistrato: Contatti): Observable<IRispostaServer> {
 
         return this.http.post<IRispostaServer>(environment.CONTATTI_API_BASE_URL, utenteRegistrato);
 
 
     };//! funzione CREATA inviareUtenteRegistratoAlServer
+
+
+    eliminaCorso(elementoIessimoOggettoCorso: any) {
+        let indiceElementoIessimoOggettoEliminato = this.arrayOggettiCorsi.indexOf(elementoIessimoOggettoCorso);
+        console.log(indiceElementoIessimoOggettoEliminato);
+        
+
+        if (indiceElementoIessimoOggettoEliminato > -1) {
+            this.arrayOggettiCorsi.splice(indiceElementoIessimoOggettoEliminato, 1);
+            
+
+
+        }
+
+    }
 
 
 

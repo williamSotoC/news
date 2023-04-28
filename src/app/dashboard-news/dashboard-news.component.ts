@@ -13,7 +13,15 @@ export class DashboardNewsComponent implements OnInit {
 
     arrayDiOggettiNotizie: INews[] = [];
 
+    // *opzione 1 usando reactiv form
     parolaChiave = new FormControl("");
+    // *opzione 1
+    // *opzione 2 usando template driven form
+    // modello = {
+    //     titolo: ""
+    // }
+    // *opzione 2
+    
 
 
 
@@ -33,6 +41,8 @@ export class DashboardNewsComponent implements OnInit {
 
 
         this.arrayDiOggettiNotizie = this.newsService.prendereNews();
+        console.log(this.arrayDiOggettiNotizie);
+        
 
 
 
@@ -48,6 +58,8 @@ export class DashboardNewsComponent implements OnInit {
 
         }
     }//! funzione CREATA ngOnInit
+
+   
 
 
     logout() {
@@ -70,11 +82,68 @@ export class DashboardNewsComponent implements OnInit {
     };//! funzione CREATA logout
 
 
-    // prendereNews() {
-    //     this.arrayDiOggettiNotizie = this.newsService.prendereNews();
+    rimuoviNews(elementoIessimoOggettoEliminato: any) {
+
+
+        if (confirm("Sei sicuro di eliminate questa news?") == true) {
+            this.newsService.eliminaNews(elementoIessimoOggettoEliminato);
+
+            this.arrayDiOggettiNotizie = this.newsService.prendereNews();
+            console.log(this.arrayDiOggettiNotizie);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            this.myParam = this.route.snapshot.params['token'] //! utilizzo la proprietà snapshot del Service ActivatedRoute
+            console.log(this.myParam)//! esso mi ritorna il token che ho  preso dal segnaposto "token"
+    
+            this.router.navigate(["news"]);
+            setTimeout(() => {
+            this.router.navigate(["dashboard-news", this.myParam]);
+    
+    
+            },10)
+    
+            
+        }
+       
 
 
 
-    // };//! funzione CREATA prendereNews
+
+
+
+
+
+        // this.arrayDiOggettiNotizie.push(
+        // {
+        //     id: 55,
+        //     titolo: "imparare",
+        //     descrizione: "Dopo il test fallito Elon Musk si è congratulato coi suoi, affermando che oggi SpaceX ha «imparato» un sacco, e questa è effettivamente la filosofia di Musk, lontana mille miglia da quella delle agenzie aerospaziali",
+        //     data: "2023-04-24",
+        //     inHome: true,
+        //     autore: "wiliam"
+        // }
+        // )
+
+        // console.log(this.arrayDiOggettiNotizie);
+        
+        
+
+
+
+    };//! funzione CREATA rimuoviNews
+
+
+
+
+
+   
 
 };//! classe(componente) DashboardNewsComponent

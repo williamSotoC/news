@@ -1,3 +1,7 @@
+<!-- {{laMiaForm.get('titolo')!.errors | json}} -->
+
+
+
 <div class="contenitorePrincipaleForm">
 
     <form [formGroup]="laMiaForm" (ngSubmit)="inviaForm()">
@@ -7,22 +11,48 @@
             <mat-label>Titolo</mat-label>
             <input formControlName="titolo" matInput name="titolo" placeholder="inserici il titolo...">
             <mat-error *ngIf="laMiaForm.get('titolo')!.errors?.['required']">
+                <!-- ! opzione1:  .errors!['required'] .Esso mi da errore nella console-->
+                <!-- ! opzione2:  .errors?.['required']-->
                 E' obbligatorio scrivere titolo
 
             </mat-error>
             <mat-error *ngIf="laMiaForm.get('titolo')!.errors?.['minlength']">
-                Devi scrivere almeno 4 caratteri
+                <!--* opzione1 -->
+                Devi scrivere ancora {{laMiaForm.get('titolo')!.errors?.['minlength'].requiredLength - laMiaForm.get('titolo')!.errors?.['minlength'].actualLength}} caratteri per eliminare l'errore
+                <!--* opzione1 -->
+
+
+                <!--* opzione2 -->
+                <!-- Devi scrivere ancora {{laMiaForm.get('titolo')!.errors?.['minlength'].requiredLength - laMiaForm.get('titolo')!.value!.length}} caratteri per eliminare l'errore -->
+                <!--* opzione2 -->
+
+
+
 
             </mat-error>
         </mat-form-field>
 
 
 
-
+<!-- 
         <mat-form-field appearance="fill">
             <mat-label>Data</mat-label>
             <input type="datetime" formControlName="data" matInput name="data"
                 placeholder="inserici data esempio 2023-04-24">
+            <mat-error *ngIf="laMiaForm.get('data')!.errors?.['required']">
+                E' obbligatorio scrivere data
+
+            </mat-error>
+        </mat-form-field> -->
+
+
+        <mat-form-field color="warn" appearance="fill">
+            <mat-label>Inserisci una data</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="data">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+
             <mat-error *ngIf="laMiaForm.get('data')!.errors?.['required']">
                 E' obbligatorio scrivere data
 
@@ -32,9 +62,10 @@
 
 
 
-        <mat-radio-group formControlName="home">
-            <mat-radio-button value="1">inHome</mat-radio-button>
-            <mat-radio-button value="2">Non inHome</mat-radio-button>
+
+        <mat-radio-group formControlName="inHome">
+            <mat-radio-button [value]="true">inHome</mat-radio-button>
+            <mat-radio-button [value]="false">Non inHome</mat-radio-button>
         </mat-radio-group>
 
 
@@ -61,7 +92,8 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Descrizione</mat-label>
-            <textarea matInput name="descrizione" placeholder="Scrivi una descrizione ..." formControlName="descrizione"></textarea>
+            <textarea matInput name="descrizione" placeholder="Scrivi una descrizione ..."
+                formControlName="descrizione"></textarea>
             <mat-error *ngIf="laMiaForm.get('descrizione')!.errors?.['required']">
                 E' obbligatorio scrivere descrizione
 
@@ -71,14 +103,21 @@
                 Devi scrivere almeno 10 caratteri
 
             </mat-error>
-            
+
         </mat-form-field>
 
 
 
 
+        <!-- ! se il button  NON E' ABILITATO inizialmente-->
         <button type="submit" [disabled]="laMiaForm.invalid == true"
-            [ngClass]="{'buttonAbilitato': laMiaForm.valid == true}" mat-raised-button >Invia</button>
+            [ngClass]="{'buttonAbilitato': laMiaForm.valid == true}" mat-raised-button>Invia</button>
+        <!-- ! se il button  NON E' ABILITATO inizialmente-->
+
+        <!-- ! se il button è ABILITATO SEMPRE-->
+        <!-- <button type="submit" 
+             mat-raised-button (click)="invia()">Invia</button> -->
+        <!-- ! se il button è ABILITATO SEMPRE-->
 
 
     </form>
@@ -90,3 +129,27 @@
     {{messaggio}}
 
 </div>
+
+
+
+<!-- ! esso funziona solo se il button è ABILITATO SEMPRE-->
+<div *ngIf="tuttiGliErrori != undefined" >
+    <!-- {{tuttiGliErrori | json}} -->
+    <!-- ! esso mi ritorna un oggetto: -->
+
+
+    <ul>
+        <li *ngFor="let ogniChiave of tuttiGliErrori | keyvalue; let i=index">
+            <!-- ! esso si legge cosi: Per ogni chiave di un SINGOLO OGGETTO , fai queelo che c'è scritto nel contenuto del tag "li"-->
+            <!-- ! "keyvalue" è il nome di una pipe -->
+            <!-- ! "keyvalue" mi permette di ciclare su TUTTE le chiavi di un SINGOLO OGGETTO -->
+
+            <strong>{{i + 1}} {{ogniChiave.key}}:</strong> {{ogniChiave.value}}
+            <!-- ! esso mi fa comparire nell browser: Titolo: Non hai inserito il titolo della notizia -->
+            <!-- ! scrivo ".key" per mostrare il NOME della chiave -->
+            <!-- ! scrivo ".value" per mostrare il VALORE del nome della chiave -->
+        </li>
+    </ul>
+
+</div>
+<!-- ! se il button è ABILITATO SEMPRE-->

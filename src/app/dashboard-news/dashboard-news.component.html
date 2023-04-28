@@ -23,8 +23,15 @@
 <mat-form-field appearance="fill" >
     <mat-label>Digita una o più parole chiavi</mat-label>
 
+    <!-- *  opzione1 usando reactiv form-->
     <input type="text" placeholder="Cerca le notizie..." matInput
     [formControl]="parolaChiave">
+    <!-- *  opzione1 -->
+
+    <!-- * opzione2  usando template driven form -->
+    <!-- <input type="text" placeholder="Cerca le notizie..." matInput
+    #variabileTemplateTitolo="ngModel"[(ngModel)]="modello.titolo">  -->
+    <!-- *  opzione2 -->
    
 </mat-form-field>
 
@@ -38,6 +45,8 @@
             <th>Titolo</th>
             <th>Autore</th>
             <th>Data</th>
+            <th>inHome?</th>
+            <th>Elimina</th>
 
 
         </tr>
@@ -46,16 +55,32 @@
 
 
     <tbody>
-        <tr *ngFor="let elementoIessimoOggettoNotizia of arrayDiOggettiNotizie | filtrareNews:parolaChiave.value!">
+        <!-- *opzione1 usando reactiv form -->
+        <tr *ngFor="let elementoIessimoOggettoNotizia of arrayDiOggettiNotizie | filtrareNews:parolaChiave.value!; let i=index">
+        <!-- *opzione1 -->
+        <!-- *opzione2 usando template driven form-->
+        <!-- <tr *ngFor="let elementoIessimoOggettoNotizia of arrayDiOggettiNotizie | filtrareNews:modello.titolo; let i=index"> -->
+        <!-- *opzione2 -->
+        <!-- *opzione3 -->
+        <!-- <tr *ngFor="let elementoIessimoOggettoNotizia of arrayDiOggettiNotizie | filtrareNews:variabileTemplateTitolo.value; let i=index"> -->
+            <!-- ! se uso questa opzione , nella console mi compare: Cannot read properties of null (reading 'toLowerCase'): MA FUNZIONA NORMALMENTE  -->
+            <!-- ! anche se metto il punto esclamativo mi compare lo stesso messaggio nella console . MA FUNZIONA NORMALMENTE-->
+ 
+        <!-- *opzione3 -->
 
 
             <!-- ! "arrayDiOggettiNotizie" COINCIDE CON IL NOME DI PARAMETRO "arrayDiOggettiValueCheDevoFiltrare" del metodo transform() -->
             <!-- ! "parolaChiave.value" è il parametro della pipe -->
             <!-- ! tale parametro della pipe viene inserito dentro l'array "args" che si trova dentro il file "pipe.ts" -->
-            <td>{{elementoIessimoOggettoNotizia.id}}</td>
+            <td>{{i + 1}}</td>
             <td>{{elementoIessimoOggettoNotizia.titolo}}</td>
             <td>{{elementoIessimoOggettoNotizia.autore}}</td>
             <td>{{elementoIessimoOggettoNotizia.data | date:"dd/MM/yyyy"}}</td>
+            <td>{{elementoIessimoOggettoNotizia.inHome}}</td>
+            <td>
+                <button type="button" (click)="rimuoviNews(elementoIessimoOggettoNotizia)">Elimina</button>
+            </td>
+
             <!-- ! se uso la pipe "date" con   data in formato: "24-04-2023", la console mi da errore-->
             
         </tr>
